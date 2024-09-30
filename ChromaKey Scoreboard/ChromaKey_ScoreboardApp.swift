@@ -8,10 +8,14 @@
 import SwiftUI
 
 @main
-struct ChromaKey_ScoreboardApp: App {
+struct ChromaKeyScoreboardApp: App {
+    // Remove the viewModel from here to prevent duplicate instances
+    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    
     var body: some Scene {
-        WindowGroup {
-            ContentView()
+        // No main window; all windows are managed by AppDelegate
+        Settings {
+            EmptyView()
         }
     }
 }

@@ -8,17 +8,32 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var viewModel = ScoreboardViewModel()
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            HStack {
+                TeamView(team: $viewModel.teamA)
+                Spacer()
+                TeamView(team: $viewModel.teamB)
+            }
+            .padding()
+            
+            Divider()
+                .padding()
+            
+            TimerView(timeInSeconds: $viewModel.timeInSeconds, isCountingDown: $viewModel.isCountingDown)
+            
+            ControlButtons(viewModel: viewModel)
+                .padding()
         }
         .padding()
+        .background(Color.green) // Chroma Key Background
     }
 }
 
-#Preview {
-    ContentView()
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
 }

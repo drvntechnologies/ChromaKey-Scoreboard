@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+import SwiftUI
+
 struct DraggableView: NSViewRepresentable {
     func makeNSView(context: Context) -> NSView {
         let view = NSView()
@@ -16,11 +18,11 @@ struct DraggableView: NSViewRepresentable {
     }
 
     func updateNSView(_ nsView: NSView, context: Context) {}
-
+    
     func makeCoordinator() -> Coordinator {
         Coordinator()
     }
-
+    
     class Coordinator: NSObject {
         @objc func handlePan(_ gesture: NSPanGestureRecognizer) {
             guard let window = gesture.view?.window else { return }
